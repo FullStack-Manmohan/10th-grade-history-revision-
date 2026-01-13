@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Class 10 History • QuickLearn (NCERT: India and the Contemporary World–II)</title>
+  <title>Class 10 Complete Study App • NCERT QuickLearn (SST + Science + Math)</title>
   <style>
     :root{
       --bg:#0b1020; --card:#121a33; --muted:#9aa7c7; --text:#e7ecff;
       --accent:#5aa6ff; --accent2:#ffb454; --good:#53d18c; --bad:#ff6b6b;
+      --science:#a78bfa; --math:#fb923c; --sst:#3b82f6;
       --border:rgba(255,255,255,.12);
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -16,6 +17,7 @@
     [data-theme="light"]{
       --bg:#f6f7fb; --card:#ffffff; --muted:#51607d; --text:#111827;
       --accent:#2563eb; --accent2:#b45309; --good:#15803d; --bad:#b91c1c;
+      --science:#7c3aed; --math:#ea580c; --sst:#1d4ed8;
       --border:rgba(17,24,39,.12);
       --shadow: 0 10px 30px rgba(17,24,39,.12);
     }
@@ -32,12 +34,12 @@
       background: color-mix(in oklab, var(--bg) 82%, transparent);
       border-bottom:1px solid var(--border);
     }
-    .wrap{max-width:1100px; margin:0 auto; padding:18px 16px;}
+    .wrap{max-width:1200px; margin:0 auto; padding:18px 16px;}
     .top{
       display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap;
     }
     h1{
-      margin:0; font-size:18px; letter-spacing:.2px;
+      margin:0; font-size:20px; letter-spacing:.2px;
     }
     .sub{color:var(--muted); font-size:13px; margin-top:3px}
     .controls{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
@@ -62,6 +64,32 @@
     .btn.primary{border-color: color-mix(in oklab, var(--accent) 60%, var(--border));}
     .btn.good{border-color: color-mix(in oklab, var(--good) 60%, var(--border));}
     .btn.bad{border-color: color-mix(in oklab, var(--bad) 60%, var(--border));}
+    
+    .subject-tabs{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;
+      padding-bottom:12px; border-bottom:2px solid var(--border);
+    }
+    .subject-tab{
+      cursor:pointer; padding:12px 20px; border-radius:12px;
+      border:2px solid var(--border); background:transparent;
+      color:var(--text); font-weight:600; font-size:16px;
+      transition: all .2s ease;
+    }
+    .subject-tab:hover{transform: translateY(-2px)}
+    .subject-tab.active{transform: translateY(-2px); box-shadow:var(--shadow)}
+    .subject-tab[data-subject="sst"].active{
+      background: color-mix(in oklab, var(--sst) 20%, transparent);
+      border-color: var(--sst);
+    }
+    .subject-tab[data-subject="science"].active{
+      background: color-mix(in oklab, var(--science) 20%, transparent);
+      border-color: var(--science);
+    }
+    .subject-tab[data-subject="math"].active{
+      background: color-mix(in oklab, var(--math) 20%, transparent);
+      border-color: var(--math);
+    }
+    
     .tabs{
       display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;
     }
@@ -80,6 +108,7 @@
     main{padding:18px 0 40px;}
     .grid{display:grid; gap:14px;}
     @media(min-width:900px){ .grid.cols2{grid-template-columns: 1.1fr .9fr;} }
+    @media(min-width:900px){ .grid.cols3{grid-template-columns: 1fr 1fr 1fr;} }
     .card{
       background: color-mix(in oklab, var(--card) 92%, transparent);
       border:1px solid var(--border);
@@ -88,6 +117,7 @@
       padding:14px;
     }
     .card h2{margin:0 0 10px; font-size:16px}
+    .card h3{margin:12px 0 8px; font-size:14px; color:var(--accent)}
     .muted{color:var(--muted)}
     .kpi{
       display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;
@@ -98,6 +128,89 @@
       min-width:150px;
     }
     .kpi .big{font-family:var(--mono); font-size:18px}
+    
+    /* SVG diagrams */
+    .diagram{
+      background: color-mix(in oklab, var(--card) 95%, transparent);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
+      margin:12px 0;
+    }
+    .diagram svg{max-width:100%; height:auto}
+    
+    /* Math formulas */
+    .formula-box{
+      background: color-mix(in oklab, var(--math) 10%, transparent);
+      border:2px solid color-mix(in oklab, var(--math) 40%, var(--border));
+      border-radius:14px;
+      padding:14px;
+      margin:12px 0;
+      font-family:var(--mono);
+      font-size:16px;
+    }
+    .step{
+      padding:10px;
+      margin:8px 0;
+      border-left:3px solid var(--accent);
+      background: color-mix(in oklab, var(--card) 90%, transparent);
+      border-radius:8px;
+    }
+    .step-num{
+      display:inline-block;
+      background:var(--accent);
+      color:var(--bg);
+      border-radius:50%;
+      width:24px;
+      height:24px;
+      text-align:center;
+      line-height:24px;
+      font-weight:bold;
+      margin-right:8px;
+    }
+    
+    /* Practice problems */
+    .problem{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px;
+      margin:10px 0;
+      background: color-mix(in oklab, var(--card) 90%, transparent);
+    }
+    .problem-input{
+      width:100%;
+      padding:10px;
+      border:1px solid var(--border);
+      border-radius:8px;
+      background:transparent;
+      color:var(--text);
+      font-family:var(--mono);
+      margin:8px 0;
+    }
+    
+    /* Concept maps */
+    .concept-map{
+      background: color-mix(in oklab, var(--card) 95%, transparent);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:20px;
+      margin:12px 0;
+    }
+    .concept-node{
+      display:inline-block;
+      padding:10px 16px;
+      border:2px solid var(--accent);
+      border-radius:12px;
+      background:color-mix(in oklab, var(--card) 90%, transparent);
+      margin:6px;
+      font-weight:600;
+    }
+    .concept-arrow{
+      display:inline-block;
+      color:var(--accent);
+      font-size:20px;
+      margin:0 8px;
+    }
     .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
     .row > *{flex:0 0 auto}
     input[type="search"], select{
@@ -196,8 +309,8 @@
   <div class="wrap">
     <div class="top">
       <div>
-        <h1>Class 10 History • QuickLearn</h1>
-        <div class="sub">NCERT: <span class="muted">India and the Contemporary World–II</span> • fast summaries + timelines + flashcards + quiz</div>
+        <h1>📚 Class 10 Complete Study App • NCERT</h1>
+        <div class="sub">SST + Science + Math • Visual Learning + Practice + Quick Revision</div>
       </div>
       <div class="controls">
         <div class="pill" title="Your progress is saved locally in this browser (localStorage).">
@@ -208,19 +321,71 @@
         <button class="btn primary" id="themeBtn" title="Toggle light/dark">Theme</button>
       </div>
     </div>
-    <div class="tabs" role="tablist" aria-label="QuickLearn Tabs">
+    
+    <!-- SUBJECT TABS -->
+    <div class="subject-tabs" role="tablist" aria-label="Subject Selection">
+      <button class="subject-tab active" data-subject="sst">📜 SST (Social Science)</button>
+      <button class="subject-tab" data-subject="science">🔬 Science</button>
+      <button class="subject-tab" data-subject="math">🔢 Math</button>
+    </div>
+    
+    <!-- SUBTABS (change based on subject) -->
+    <div class="tabs" id="subTabs" role="tablist" aria-label="Feature Tabs">
       <button class="tab active" data-tab="overview">Overview</button>
       <button class="tab" data-tab="chapters">Chapters</button>
-      <button class="tab" data-tab="timeline">Timeline</button>
+      <button class="tab" data-tab="visual">Visual Learn</button>
+      <button class="tab" data-tab="practice">Practice</button>
       <button class="tab" data-tab="flashcards">Flashcards</button>
       <button class="tab" data-tab="quiz">Quiz</button>
-      <button class="tab" data-tab="progress">Progress</button>
     </div>
   </div>
 </header>
 
 <main class="wrap">
+  <!-- ==================== SST CONTENT ==================== -->
+  <div id="subject-sst" class="subject-content">
+    
   <!-- OVERVIEW -->
+  <section id="tab-overview">
+    <div class="grid cols2">
+      <div class="card">
+        <h2>How to use (10–15 min/day)</h2>
+        <ol>
+          <li><b>Choose your subject</b>: SST, Science, or Math</li>
+          <li><b>Visual Learn</b>: See diagrams & concept maps</li>
+          <li><b>Practice</b>: Solve problems with step-by-step solutions</li>
+          <li><b>Flashcards</b>: Quick revision & memory building</li>
+          <li><b>Quiz</b>: Test yourself with instant feedback</li>
+        </ol>
+        <div class="callout">
+          <b>Memory hack:</b> Visual learning + Practice + Repetition = Long-term memory!
+          Use diagrams to understand, practice to apply, flashcards to memorize.
+        </div>
+        <div class="footer-note">All content aligned with NCERT Class 10 syllabus. Progress saved automatically in your browser.</div>
+      </div>
+
+      <div class="card">
+        <h2>Quick anchors (the "must-know" years)</h2>
+        <div class="two" id="anchorList"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2>One-page cheat sheet (super short)</h2>
+      <div class="two" id="cheatSheet"></div>
+    </div>
+  </section>
+
+  <!-- CHAPTERS -->
+  <section id="tab-chapters" class="hidden">
+    <div class="row" style="margin-bottom:10px">
+      <input id="chapterSearch" type="search" placeholder="Search people / places / keywords (e.g., 'Dandi', 'Vienna')" />
+      <select id="chapterFilter">
+        <option value="ALL">All chapters</option>
+      </select>
+    </div>
+    <div id="chapterAccordions"></div>
+  </section>
   <section id="tab-overview">
     <div class="grid cols2">
       <div class="card">
@@ -250,7 +415,24 @@
     </div>
   </section>
 
-  <!-- CHAPTERS -->
+  <!-- VISUAL LEARNING (SST) -->
+  <section id="tab-visual" class="hidden">
+    <div class="card">
+      <h2>Visual Timeline & Concept Maps</h2>
+      <div class="timeline" id="timelineStrip"></div>
+    </div>
+  </section>
+
+  <!-- PRACTICE (SST) -->
+  <section id="tab-practice" class="hidden">
+    <div class="card">
+      <h2>Practice: Match the Pairs</h2>
+      <div class="small muted">Connect events with years and people</div>
+      <div id="matchPractice" style="margin-top:16px"></div>
+    </div>
+  </section>
+
+  <!-- FLASHCARDS -->
   <section id="tab-chapters" class="hidden">
     <div class="row" style="margin-bottom:10px">
       <input id="chapterSearch" type="search" placeholder="Search people / places / keywords (e.g., 'Dandi', 'Vienna')" />
@@ -372,11 +554,289 @@
       </div>
     </div>
   </section>
+
+  <!-- PROGRESS -->
+  <section id="tab-progress" class="hidden">
+    <div class="grid cols2">
+      <div class="card">
+        <h2>Progress snapshot</h2>
+        <div class="kpi">
+          <div class="box"><div class="big" id="pTotal">0</div><div class="muted">Total cards</div></div>
+          <div class="box"><div class="big" id="pMastered">0</div><div class="muted">Mastered (Box 4)</div></div>
+          <div class="box"><div class="big" id="pWeak">0</div><div class="muted">Weak (Box 1)</div></div>
+        </div>
+        <div class="divider"></div>
+        <div class="small">Tip: If time is short, focus on <b>Box 1 + Anchor years</b>.</div>
+      </div>
+      <div class="card">
+        <h2>What to memorize for exams</h2>
+        <ul>
+          <li><b>People + role</b> (who did what?)</li>
+          <li><b>Places + why important</b> (where did it happen?)</li>
+          <li><b>Cause → event → result</b> (the "story chain")</li>
+          <li><b>Anchor years</b> (not every date)</li>
+        </ul>
+        <div class="callout">
+          <b>Fast answer format (3 lines):</b><br>
+          1) Context/cause<br>
+          2) Main event/action<br>
+          3) Result/impact
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  
+  <!-- ==================== SCIENCE CONTENT ==================== -->
+  <div id="subject-science" class="subject-content hidden">
+    
+    <!-- OVERVIEW -->
+    <section id="sci-overview">
+      <div class="card">
+        <h2>🔬 Class 10 Science - NCERT Syllabus</h2>
+        <div class="grid cols3">
+          <div class="card" style="border-color:var(--science)">
+            <h3>⚡ Physics</h3>
+            <ul style="font-size:14px">
+              <li>Light - Reflection & Refraction</li>
+              <li>Human Eye</li>
+              <li>Electricity</li>
+              <li>Magnetic Effects</li>
+              <li>Energy Sources</li>
+            </ul>
+          </div>
+          <div class="card" style="border-color:var(--good)">
+            <h3>🧪 Chemistry</h3>
+            <ul style="font-size:14px">
+              <li>Chemical Reactions</li>
+              <li>Acids, Bases & Salts</li>
+              <li>Metals & Non-metals</li>
+              <li>Carbon Compounds</li>
+              <li>Periodic Classification</li>
+            </ul>
+          </div>
+          <div class="card" style="border-color:var(--accent2)">
+            <h3>🌱 Biology</h3>
+            <ul style="font-size:14px">
+              <li>Life Processes</li>
+              <li>Control & Coordination</li>
+              <li>Reproduction</li>
+              <li>Heredity & Evolution</li>
+              <li>Environment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CHAPTERS -->
+    <section id="sci-chapters" class="hidden">
+      <div class="card">
+        <h2>Science Concepts - Quick Reference</h2>
+        <select id="sciChapterSelect">
+          <option value="light">Light - Reflection & Refraction</option>
+          <option value="eye">Human Eye & Colourful World</option>
+          <option value="electricity">Electricity</option>
+          <option value="magnetic">Magnetic Effects of Current</option>
+          <option value="reactions">Chemical Reactions</option>
+          <option value="acids">Acids, Bases & Salts</option>
+          <option value="life">Life Processes</option>
+          <option value="control">Control & Coordination</option>
+        </select>
+        <div id="sciChapterContent" style="margin-top:16px"></div>
+      </div>
+    </section>
+    
+    <!-- VISUAL LEARNING (DIAGRAMS) -->
+    <section id="sci-visual" class="hidden">
+      <div class="card">
+        <h2>📊 Visual Diagrams & Illustrations</h2>
+        <div class="row" style="margin-bottom:12px">
+          <select id="diagramSelect">
+            <option value="refraction">Light Refraction through Glass Slab</option>
+            <option value="eye">Human Eye Structure</option>
+            <option value="circuit">Electric Circuit</option>
+            <option value="ohm">Ohm's Law Graph</option>
+            <option value="motor">Electric Motor</option>
+            <option value="cell">Plant Cell vs Animal Cell</option>
+            <option value="heart">Human Heart</option>
+            <option value="neuron">Neuron Structure</option>
+          </select>
+        </div>
+        <div id="diagramDisplay"></div>
+      </div>
+    </section>
+    
+    <!-- PRACTICE -->
+    <section id="sci-practice" class="hidden">
+      <div class="card">
+        <h2>🧪 Practice Numericals</h2>
+        <div id="sciPracticeArea"></div>
+      </div>
+    </section>
+    
+    <!-- FLASHCARDS -->
+    <section id="sci-flashcards" class="hidden">
+      <div class="card">
+        <h2>Science Flashcards</h2>
+        <div class="muted small">Key concepts, formulas, and diagrams</div>
+        <div id="sciFlashcardArea" style="margin-top:16px">
+          <div class="flashcard" style="min-height:200px; cursor:pointer" onclick="this.classList.toggle('revealed')">
+            <div class="front">What is Ohm's Law?</div>
+            <div class="back">V = IR<br>Voltage = Current × Resistance<br><br>📌 Remember: VIR (Very Important Rule)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- QUIZ -->
+    <section id="sci-quiz" class="hidden">
+      <div class="card">
+        <h2>Science Quiz</h2>
+        <button class="btn primary" onclick="generateScienceQuiz()">Start New Quiz</button>
+        <div id="sciQuizArea" style="margin-top:16px"></div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- ==================== MATH CONTENT ==================== -->
+  <div id="subject-math" class="subject-content hidden">
+    
+    <!-- OVERVIEW -->
+    <section id="math-overview">
+      <div class="card">
+        <h2>🔢 Class 10 Math - NCERT Syllabus</h2>
+        <div class="grid cols2">
+          <div class="card" style="border-color:var(--math)">
+            <h3>📐 Chapters</h3>
+            <ol style="font-size:14px; line-height:1.8">
+              <li>Real Numbers</li>
+              <li>Polynomials</li>
+              <li>Linear Equations (Pair)</li>
+              <li>Quadratic Equations</li>
+              <li>Arithmetic Progressions</li>
+              <li>Triangles</li>
+              <li>Coordinate Geometry</li>
+              <li>Trigonometry</li>
+              <li>Circles</li>
+              <li>Statistics & Probability</li>
+            </ol>
+          </div>
+          <div class="card" style="border-color:var(--accent)">
+            <h3>⚡ Quick Formulas</h3>
+            <div class="formula-box">
+              <div><b>Quadratic:</b> ax² + bx + c = 0</div>
+              <div style="margin-top:8px"><b>Roots:</b> x = [-b ± √(b²-4ac)] / 2a</div>
+            </div>
+            <div class="formula-box">
+              <div><b>Pythagoras:</b> a² + b² = c²</div>
+            </div>
+            <div class="formula-box">
+              <div><b>sin²θ + cos²θ = 1</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CHAPTERS -->
+    <section id="math-chapters" class="hidden">
+      <div class="card">
+        <h2>Math Concepts - Step by Step</h2>
+        <select id="mathChapterSelect" onchange="loadMathChapter(this.value)">
+          <option value="realnumbers">Real Numbers</option>
+          <option value="polynomials">Polynomials</option>
+          <option value="linear">Linear Equations</option>
+          <option value="quadratic">Quadratic Equations</option>
+          <option value="ap">Arithmetic Progressions</option>
+          <option value="triangles">Triangles</option>
+          <option value="trigonometry">Trigonometry</option>
+        </select>
+        <div id="mathChapterContent" style="margin-top:16px"></div>
+      </div>
+    </section>
+    
+    <!-- VISUAL LEARNING (FORMULAS & GRAPHS) -->
+    <section id="math-visual" class="hidden">
+      <div class="card">
+        <h2>📈 Interactive Formulas & Graphs</h2>
+        <div id="mathVisualArea"></div>
+      </div>
+    </section>
+    
+    <!-- PRACTICE -->
+    <section id="math-practice" class="hidden">
+      <div class="card">
+        <h2>📝 Practice Problems</h2>
+        <div class="row" style="margin-bottom:12px">
+          <select id="mathPracticeSelect" onchange="loadMathPractice(this.value)">
+            <option value="quadratic">Quadratic Equations</option>
+            <option value="ap">Arithmetic Progressions</option>
+            <option value="trigonometry">Trigonometry</option>
+            <option value="statistics">Statistics</option>
+          </select>
+        </div>
+        <div id="mathPracticeArea"></div>
+      </div>
+    </section>
+    
+    <!-- FLASHCARDS -->
+    <section id="math-flashcards" class="hidden">
+      <div class="card">
+        <h2>Math Formula Flashcards</h2>
+        <div id="mathFlashcardArea" style="margin-top:16px"></div>
+      </div>
+    </section>
+    
+    <!-- QUIZ -->
+    <section id="math-quiz" class="hidden">
+      <div class="card">
+        <h2>Math Quiz</h2>
+        <button class="btn primary" onclick="generateMathQuiz()">Start New Quiz</button>
+        <div id="mathQuizArea" style="margin-top:16px"></div>
+      </div>
+    </section>
+  </div>
 </main>
 
 <script>
 /* =========================
-   DATA (edit here to add more)
+   GLOBAL STATE & STORAGE
+   ========================= */
+let CURRENT_SUBJECT = 'sst';
+let CURRENT_TAB = 'overview';
+
+const STORE_KEY = "quicklearn_multisubject_v1";
+function loadStore(){
+  try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || null; }catch(e){ return null; }
+}
+function saveStore(obj){ localStorage.setItem(STORE_KEY, JSON.stringify(obj)); }
+
+function todayStr(){
+  const d = new Date();
+  return d.toISOString().slice(0,10);
+}
+function initStore(){
+  const s = loadStore();
+  if(s) return s;
+  const boxes = {};
+  CARDS.forEach(c => boxes[c.id] = 1);
+  const state = { 
+    theme:"dark", 
+    boxes, 
+    lastPractice:null, 
+    streak:0, 
+    deck:"ALL", 
+    order:[], 
+    idx:0,
+    subject: 'sst'
+  };
+  saveStore(state);
+  return state;
+}
+
+/* =========================
+   SST DATA
    ========================= */
 const CHAPTERS = [
   {id:"EU", title:"1. The Rise of Nationalism in Europe"},
@@ -472,35 +932,13 @@ function initStore(){
   // default: all cards start in box 1
   const boxes = {};
   CARDS.forEach(c => boxes[c.id] = 1);
-  const state = { theme:"dark", boxes, lastPractice:null, streak:0, deck:"ALL", order:[], idx:0 };
+  const state = { theme:"dark", boxes, lastPractice:null, streak:0, deck:"ALL", order:[], idx:0, subject: 'sst' };
   saveStore(state);
   return state;
 }
-let STATE = initStore();
 
 /* =========================
-   UI helpers
-   ========================= */
-const $ = (q)=>document.querySelector(q);
-const $$ = (q)=>Array.from(document.querySelectorAll(q));
-
-function setTheme(theme){
-  document.documentElement.dataset.theme = theme === "light" ? "light" : "dark";
-  STATE.theme = theme;
-  saveStore(STATE);
-}
-setTheme(STATE.theme);
-
-function setTab(tab){
-  $$(".tab").forEach(b=>b.classList.toggle("active", b.dataset.tab===tab));
-  ["overview","chapters","timeline","flashcards","quiz","progress"].forEach(t=>{
-    const el = $("#tab-"+t);
-    el.classList.toggle("hidden", t!==tab);
-  });
-}
-
-/* =========================
-   Build overview
+   Build overview (SST specific functions)
    ========================= */
 function buildAnchors(){
   const anchors = EVENTS.filter(e=>e.anchor).sort((a,b)=> String(a.year).localeCompare(String(b.year)));
@@ -928,8 +1366,804 @@ function gradeQuiz(){
 }
 
 /* =========================
-   Wiring / events
+   SCIENCE DIAGRAMS (SVG)
    ========================= */
+const DIAGRAMS = {
+  refraction: `
+    <div class="diagram">
+      <h3>Light Refraction through Glass Slab</h3>
+      <svg viewBox="0 0 400 300" style="max-width:500px">
+        <!-- Glass slab -->
+        <rect x="150" y="50" width="100" height="200" fill="rgba(100,180,255,0.3)" stroke="#5aa6ff" stroke-width="2"/>
+        <!-- Incident ray -->
+        <line x1="50" y1="120" x2="150" y2="150" stroke="#ffb454" stroke-width="3" marker-end="url(#arrow)"/>
+        <!-- Refracted ray inside -->
+        <line x1="150" y1="150" x2="250" y2="170" stroke="#ff6b6b" stroke-width="3" marker-end="url(#arrow)"/>
+        <!-- Emergent ray -->
+        <line x1="250" y1="170" x2="350" y2="200" stroke="#53d18c" stroke-width="3" marker-end="url(#arrow)"/>
+        <!-- Normal lines -->
+        <line x1="150" y1="50" x2="150" y2="250" stroke="white" stroke-width="1" stroke-dasharray="5,5" opacity="0.5"/>
+        <line x1="250" y1="50" x2="250" y2="250" stroke="white" stroke-width="1" stroke-dasharray="5,5" opacity="0.5"/>
+        <!-- Labels -->
+        <text x="60" y="110" fill="#ffb454" font-size="14">Incident Ray</text>
+        <text x="160" y="160" fill="#ff6b6b" font-size="14">Refracted</text>
+        <text x="260" y="210" fill="#53d18c" font-size="14">Emergent Ray</text>
+        <text x="160" y="270" fill="#5aa6ff" font-size="16" font-weight="bold">Glass Slab</text>
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#ffb454"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="callout" style="margin-top:12px">
+        <b>Key Points:</b><br>
+        • Light bends when entering denser medium (air → glass)<br>
+        • Emergent ray is parallel to incident ray<br>
+        • Lateral displacement occurs<br>
+        <b>Formula:</b> n₁ sin i = n₂ sin r (Snell's Law)
+      </div>
+    </div>`,
+  
+  eye: `
+    <div class="diagram">
+      <h3>Human Eye Structure</h3>
+      <svg viewBox="0 0 500 300" style="max-width:600px">
+        <!-- Eye outline -->
+        <ellipse cx="250" cy="150" rx="150" ry="100" fill="rgba(255,255,255,0.1)" stroke="#5aa6ff" stroke-width="2"/>
+        <!-- Cornea -->
+        <ellipse cx="150" cy="150" rx="50" ry="70" fill="rgba(90,166,255,0.3)" stroke="#5aa6ff" stroke-width="2"/>
+        <!-- Pupil & Iris -->
+        <circle cx="150" cy="150" r="35" fill="rgba(100,100,255,0.4)" stroke="#7c3aed" stroke-width="2"/>
+        <circle cx="150" cy="150" r="18" fill="black"/>
+        <!-- Lens -->
+        <ellipse cx="200" cy="150" rx="20" ry="40" fill="rgba(255,180,84,0.4)" stroke="#ffb454" stroke-width="2"/>
+        <!-- Retina -->
+        <path d="M 330 80 Q 370 150 330 220" fill="none" stroke="#ff6b6b" stroke-width="3"/>
+        <!-- Optic nerve -->
+        <line x1="340" y1="150" x2="420" y2="150" stroke="#53d18c" stroke-width="4"/>
+        <!-- Light rays -->
+        <line x1="50" y1="130" x2="150" y2="145" stroke="yellow" stroke-width="2" opacity="0.7"/>
+        <line x1="50" y1="170" x2="150" y2="155" stroke="yellow" stroke-width="2" opacity="0.7"/>
+        <!-- Labels -->
+        <text x="140" y="100" fill="#5aa6ff" font-size="13" font-weight="bold">Cornea</text>
+        <text x="140" y="220" fill="#7c3aed" font-size="13" font-weight="bold">Iris & Pupil</text>
+        <text x="200" y="120" fill="#ffb454" font-size="13" font-weight="bold">Lens</text>
+        <text x="280" y="140" fill="#ff6b6b" font-size="13" font-weight="bold">Retina</text>
+        <text x="350" y="140" fill="#53d18c" font-size="13" font-weight="bold">Optic Nerve</text>
+      </svg>
+      <div class="callout" style="margin-top:12px">
+        <b>Functions:</b><br>
+        • <b>Cornea:</b> Refracts light entering eye<br>
+        • <b>Iris:</b> Controls pupil size<br>
+        • <b>Lens:</b> Focuses light on retina (accommodation)<br>
+        • <b>Retina:</b> Contains rods & cones (light-sensitive cells)<br>
+        • <b>Optic Nerve:</b> Carries signals to brain
+      </div>
+    </div>`,
+  
+  circuit: `
+    <div class="diagram">
+      <h3>Simple Electric Circuit</h3>
+      <svg viewBox="0 0 400 300" style="max-width:500px">
+        <!-- Battery -->
+        <line x1="50" y1="100" x2="50" y2="120" stroke="white" stroke-width="4"/>
+        <line x1="50" y1="130" x2="50" y2="150" stroke="white" stroke-width="2"/>
+        <text x="20" y="130" fill="#ffb454" font-size="14" font-weight="bold">Battery</text>
+        <text x="20" y="145" fill="#ffb454" font-size="12">+ −</text>
+        
+        <!-- Wires -->
+        <line x1="50" y1="100" x2="200" y2="100" stroke="#53d18c" stroke-width="3"/>
+        <line x1="200" y1="100" x2="350" y2="100" stroke="#53d18c" stroke-width="3"/>
+        <line x1="350" y1="100" x2="350" y2="200" stroke="#53d18c" stroke-width="3"/>
+        <line x1="350" y1="200" x2="50" y2="200" stroke="#53d18c" stroke-width="3"/>
+        <line x1="50" y1="200" x2="50" y2="150" stroke="#53d18c" stroke-width="3"/>
+        
+        <!-- Bulb -->
+        <circle cx="200" cy="100" r="25" fill="rgba(255,180,84,0.4)" stroke="#ffb454" stroke-width="3"/>
+        <text x="230" y="105" fill="#ffb454" font-size="14" font-weight="bold">Bulb</text>
+        
+        <!-- Switch -->
+        <rect x="340" y="190" width="20" height="20" fill="rgba(255,107,107,0.3)" stroke="#ff6b6b" stroke-width="2"/>
+        <text x="290" y="240" fill="#ff6b6b" font-size="14" font-weight="bold">Switch</text>
+        
+        <!-- Current direction arrows -->
+        <text x="120" y="90" fill="#5aa6ff" font-size="16">→ Current (I)</text>
+        <text x="270" y="220" fill="#5aa6ff" font-size="16">→</text>
+      </svg>
+      <div class="callout" style="margin-top:12px">
+        <b>Circuit Components:</b><br>
+        • Battery provides voltage (V)<br>
+        • Current (I) flows through circuit<br>
+        • Bulb offers resistance (R)<br>
+        • Switch controls the flow<br>
+        <b>Ohm's Law:</b> V = I × R
+      </div>
+    </div>`,
+  
+  ohm: `
+    <div class="diagram">
+      <h3>Ohm's Law - V vs I Graph</h3>
+      <svg viewBox="0 0 400 300" style="max-width:500px">
+        <!-- Axes -->
+        <line x1="50" y1="250" x2="350" y2="250" stroke="white" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <line x1="50" y1="250" x2="50" y2="50" stroke="white" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Grid -->
+        <line x1="50" y1="200" x2="350" y2="200" stroke="rgba(255,255,255,0.2)" stroke-dasharray="5,5"/>
+        <line x1="50" y1="150" x2="350" y2="150" stroke="rgba(255,255,255,0.2)" stroke-dasharray="5,5"/>
+        <line x1="50" y1="100" x2="350" y2="100" stroke="rgba(255,255,255,0.2)" stroke-dasharray="5,5"/>
+        <line x1="150" y1="250" x2="150" y2="50" stroke="rgba(255,255,255,0.2)" stroke-dasharray="5,5"/>
+        <line x1="250" y1="250" x2="250" y2="50" stroke="rgba(255,255,255,0.2)" stroke-dasharray="5,5"/>
+        
+        <!-- Ohm's Law line -->
+        <line x1="50" y1="250" x2="330" y2="70" stroke="#5aa6ff" stroke-width="4"/>
+        
+        <!-- Labels -->
+        <text x="360" y="255" fill="white" font-size="16">I (Current) →</text>
+        <text x="15" y="40" fill="white" font-size="16">V (Voltage) ↑</text>
+        <text x="150" y="150" fill="#5aa6ff" font-size="18" font-weight="bold">V ∝ I</text>
+        <text x="140" y="170" fill="#5aa6ff" font-size="14">(Linear)</text>
+        
+        <!-- Points -->
+        <circle cx="150" cy="175" r="5" fill="#ffb454"/>
+        <circle cx="250" cy="100" r="5" fill="#ffb454"/>
+        
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="white"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="callout" style="margin-top:12px">
+        <b>Ohm's Law:</b> V = I × R<br>
+        • Graph is a straight line passing through origin<br>
+        • Slope of line = Resistance (R)<br>
+        • Higher slope = Higher resistance<br>
+        <b>Example:</b> If V = 10V and I = 2A, then R = 5Ω
+      </div>
+    </div>`,
+  
+  motor: `
+    <div class="diagram">
+      <h3>Electric Motor (Simplified)</h3>
+      <svg viewBox="0 0 400 300" style="max-width:500px">
+        <!-- Magnet poles -->
+        <rect x="50" y="80" width="60" height="140" fill="rgba(255,107,107,0.3)" stroke="#ff6b6b" stroke-width="3"/>
+        <text x="65" y="155" fill="#ff6b6b" font-size="24" font-weight="bold">N</text>
+        <rect x="290" y="80" width="60" height="140" fill="rgba(83,209,140,0.3)" stroke="#53d18c" stroke-width="3"/>
+        <text x="310" y="155" fill="#53d18c" font-size="24" font-weight="bold">S</text>
+        
+        <!-- Coil (armature) -->
+        <rect x="160" y="120" width="80" height="60" fill="rgba(90,166,255,0.2)" stroke="#5aa6ff" stroke-width="3" rx="5"/>
+        <text x="175" y="155" fill="#5aa6ff" font-size="14" font-weight="bold">Coil</text>
+        
+        <!-- Rotation arrow -->
+        <path d="M 200 100 Q 230 100 230 130" fill="none" stroke="#ffb454" stroke-width="3" marker-end="url(#arrowRotate)"/>
+        <text x="235" y="110" fill="#ffb454" font-size="16">↻</text>
+        
+        <!-- Magnetic field lines -->
+        <path d="M 110 120 Q 200 110 290 120" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="3,3"/>
+        <path d="M 110 180 Q 200 190 290 180" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="3,3"/>
+        
+        <text x="130" y="270" fill="white" font-size="14">Force on current-carrying coil</text>
+        <text x="145" y="285" fill="white" font-size="14">→ Rotation (Motor Effect)</text>
+        
+        <defs>
+          <marker id="arrowRotate" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#ffb454"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="callout" style="margin-top:12px">
+        <b>How it works:</b><br>
+        • Current through coil in magnetic field<br>
+        • Force acts on coil (Fleming's Left Hand Rule)<br>
+        • Coil rotates → Mechanical energy<br>
+        • Commutator reverses current every half rotation
+      </div>
+    </div>`,
+  
+  cell: `
+    <div class="diagram">
+      <h3>Plant Cell vs Animal Cell</h3>
+      <svg viewBox="0 0 500 300" style="max-width:650px">
+        <!-- Plant Cell -->
+        <rect x="30" y="30" width="200" height="240" fill="rgba(83,209,140,0.2)" stroke="#53d18c" stroke-width="3" rx="5"/>
+        <text x="90" y="20" fill="#53d18c" font-size="16" font-weight="bold">Plant Cell</text>
+        <!-- Cell wall -->
+        <rect x="35" y="35" width="190" height="230" fill="none" stroke="#53d18c" stroke-width="2"/>
+        <!-- Cell membrane -->
+        <rect x="45" y="45" width="170" height="210" fill="rgba(90,166,255,0.1)" stroke="#5aa6ff" stroke-width="2" stroke-dasharray="5,5"/>
+        <!-- Nucleus -->
+        <circle cx="130" cy="110" r="30" fill="rgba(255,180,84,0.3)" stroke="#ffb454" stroke-width="2"/>
+        <!-- Chloroplast -->
+        <ellipse cx="80" cy="180" rx="20" ry="15" fill="rgba(83,209,140,0.5)" stroke="#53d18c" stroke-width="2"/>
+        <ellipse cx="170" cy="190" rx="20" ry="15" fill="rgba(83,209,140,0.5)" stroke="#53d18c" stroke-width="2"/>
+        <!-- Vacuole -->
+        <rect x="95" y="150" width="70" height="90" fill="rgba(90,166,255,0.2)" stroke="#5aa6ff" stroke-width="2" rx="5"/>
+        
+        <!-- Animal Cell -->
+        <ellipse cx="350" cy="150" rx="100" ry="120" fill="rgba(255,180,84,0.1)" stroke="#ffb454" stroke-width="3"/>
+        <text x="305" y="20" fill="#ffb454" font-size="16" font-weight="bold">Animal Cell</text>
+        <!-- Cell membrane -->
+        <ellipse cx="350" cy="150" rx="95" ry="115" fill="none" stroke="#5aa6ff" stroke-width="2" stroke-dasharray="5,5"/>
+        <!-- Nucleus -->
+        <circle cx="350" cy="130" r="30" fill="rgba(255,180,84,0.3)" stroke="#ffb454" stroke-width="2"/>
+        <!-- Small vacuoles -->
+        <circle cx="320" cy="190" r="10" fill="rgba(90,166,255,0.2)" stroke="#5aa6ff" stroke-width="1"/>
+        <circle cx="370" cy="200" r="8" fill="rgba(90,166,255,0.2)" stroke="#5aa6ff" stroke-width="1"/>
+      </svg>
+      <div class="callout" style="margin-top:12px">
+        <b>Key Differences:</b><br>
+        <b>Plant Cell:</b> Cell wall, Large vacuole, Chloroplasts, Regular shape<br>
+        <b>Animal Cell:</b> No cell wall, Small vacuoles, No chloroplasts, Irregular shape<br>
+        <b>Both have:</b> Cell membrane, Nucleus, Cytoplasm, Mitochondria
+      </div>
+    </div>`,
+  
+  heart: `
+    <div class="diagram">
+      <h3>Human Heart - 4 Chambers</h3>
+      <svg viewBox="0 0 400 350" style="max-width:500px">
+        <!-- Left Atrium -->
+        <path d="M 150 80 Q 120 100 130 130 L 170 130 Q 180 100 150 80" fill="rgba(255,107,107,0.4)" stroke="#ff6b6b" stroke-width="2"/>
+        <text x="125" y="115" fill="white" font-size="12" font-weight="bold">LA</text>
+        
+        <!-- Right Atrium -->
+        <path d="M 250 80 Q 280 100 270 130 L 230 130 Q 220 100 250 80" fill="rgba(255,107,107,0.3)" stroke="#ff6b6b" stroke-width="2"/>
+        <text x="245" y="115" fill="white" font-size="12" font-weight="bold">RA</text>
+        
+        <!-- Left Ventricle -->
+        <path d="M 130 135 L 170 135 Q 180 180 150 220 Q 120 180 130 135" fill="rgba(255,107,107,0.5)" stroke="#ff6b6b" stroke-width="3"/>
+        <text x="135" y="175" fill="white" font-size="12" font-weight="bold">LV</text>
+        
+        <!-- Right Ventricle -->
+        <path d="M 230 135 L 270 135 Q 280 180 250 220 Q 220 180 230 135" fill="rgba(255,107,107,0.4)" stroke="#ff6b6b" stroke-width="3"/>
+        <text x="235" y="175" fill="white" font-size="12" font-weight="bold">RV</text>
+        
+        <!-- Septum -->
+        <line x1="200" y1="90" x2="200" y2="215" stroke="white" stroke-width="3"/>
+        
+        <!-- Blood vessels -->
+        <path d="M 150 75 L 150 40" stroke="#5aa6ff" stroke-width="4" marker-end="url(#arrow2)"/>
+        <text x="110" y="35" fill="#5aa6ff" font-size="11">Aorta</text>
+        
+        <path d="M 250 75 L 250 40" stroke="#a78bfa" stroke-width="4" marker-end="url(#arrow2)"/>
+        <text x="255" y="35" fill="#a78bfa" font-size="11">Pulmonary</text>
+        
+        <path d="M 130 80 L 100 50" stroke="#a78bfa" stroke-width="3"/>
+        <text x="50" y="45" fill="#a78bfa" font-size="10">From Lungs</text>
+        
+        <path d="M 270 80 L 300 50" stroke="#5aa6ff" stroke-width="3"/>
+        <text x="305" y="45" fill="#5aa6ff" font-size="10">From Body</text>
+        
+        <!-- Labels -->
+        <text x="320" y="120" fill="#ff6b6b" font-size="13">Atria</text>
+        <text x="320" y="170" fill="#ff6b6b" font-size="13">Ventricles</text>
+        
+        <!-- Info box -->
+        <rect x="20" y="240" width="360" height="90" fill="rgba(30,30,50,0.8)" stroke="var(--border)" stroke-width="1" rx="8"/>
+        <text x="30" y="260" fill="#5aa6ff" font-size="13" font-weight="bold">Blood Flow:</text>
+        <text x="30" y="280" fill="white" font-size="12">1. RA → RV → Lungs (get O₂)</text>
+        <text x="30" y="295" fill="white" font-size="12">2. Lungs → LA → LV → Body</text>
+        <text x="30" y="315" fill="#ffb454" font-size="12"><tspan font-weight="bold">Remember:</tspan> Left side = Oxygenated (red)</text>
+        
+        <defs>
+          <marker id="arrow2" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#5aa6ff"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>`,
+  
+  neuron: `
+    <div class="diagram">
+      <h3>Neuron (Nerve Cell) Structure</h3>
+      <svg viewBox="0 0 500 250" style="max-width:600px">
+        <!-- Dendrites -->
+        <path d="M 50 100 Q 70 80 90 100" fill="none" stroke="#a78bfa" stroke-width="2"/>
+        <path d="M 50 120 Q 70 140 90 120" fill="none" stroke="#a78bfa" stroke-width="2"/>
+        <path d="M 50 110 L 90 110" stroke="#a78bfa" stroke-width="2"/>
+        <text x="40" y="70" fill="#a78bfa" font-size="13" font-weight="bold">Dendrites</text>
+        
+        <!-- Cell Body -->
+        <circle cx="130" cy="110" r="35" fill="rgba(167,139,250,0.3)" stroke="#a78bfa" stroke-width="3"/>
+        <circle cx="130" cy="110" r="15" fill="rgba(255,180,84,0.4)" stroke="#ffb454" stroke-width="2"/>
+        <text x="115" y="115" fill="#ffb454" font-size="11" font-weight="bold">Nucleus</text>
+        <text x="100" y="165" fill="#a78bfa" font-size="13" font-weight="bold">Cell Body</text>
+        
+        <!-- Axon -->
+        <line x1="165" y1="110" x2="380" y2="110" stroke="#5aa6ff" stroke-width="8"/>
+        <text x="250" y="95" fill="#5aa6ff" font-size="13" font-weight="bold">Axon</text>
+        
+        <!-- Myelin Sheath -->
+        <rect x="200" y="100" width="40" height="20" fill="rgba(255,180,84,0.4)" stroke="#ffb454" stroke-width="2" rx="4"/>
+        <rect x="260" y="100" width="40" height="20" fill="rgba(255,180,84,0.4)" stroke="#ffb454" stroke-width="2" rx="4"/>
+        <rect x="320" y="100" width="40" height="20" fill="rgba(255,180,84,0.4)" stroke="#ffb454" stroke-width="2" rx="4"/>
+        <text x="220" y="145" fill="#ffb454" font-size="12">Myelin Sheath</text>
+        
+        <!-- Axon Terminal -->
+        <circle cx="400" cy="100" r="12" fill="rgba(83,209,140,0.4)" stroke="#53d18c" stroke-width="2"/>
+        <circle cx="410" cy="115" r="10" fill="rgba(83,209,140,0.4)" stroke="#53d18c" stroke-width="2"/>
+        <circle cx="395" cy="120" r="11" fill="rgba(83,209,140,0.4)" stroke="#53d18c" stroke-width="2"/>
+        <text x="350" y="155" fill="#53d18c" font-size="13" font-weight="bold">Axon Terminal</text>
+        
+        <!-- Impulse direction -->
+        <text x="180" y="180" fill="#ff6b6b" font-size="16">→ → → Nerve Impulse → → →</text>
+        
+        <!-- Info box -->
+        <rect x="10" y="190" width="480" height="50" fill="rgba(30,30,50,0.9)" stroke="var(--border)" stroke-width="1" rx="8"/>
+        <text x="20" y="210" fill="white" font-size="12"><tspan font-weight="bold" fill="#a78bfa">Dendrites:</tspan> Receive signals</text>
+        <text x="20" y="227" fill="white" font-size="12"><tspan font-weight="bold" fill="#5aa6ff">Axon:</tspan> Transmits impulse | <tspan font-weight="bold" fill="#ffb454">Myelin:</tspan> Speeds up signal | <tspan font-weight="bold" fill="#53d18c">Terminal:</tspan> Releases neurotransmitters</text>
+      </svg>
+    </div>`
+};
+
+/* =========================
+   MATH CONTENT
+   ========================= */
+const MATH_CONTENT = {
+  quadratic: {
+    title: "Quadratic Equations - Step by Step",
+    formula: "ax² + bx + c = 0",
+    solution: `
+      <div class="step">
+        <span class="step-num">1</span>
+        <b>Standard Form:</b> ax² + bx + c = 0 (a ≠ 0)
+      </div>
+      <div class="step">
+        <span class="step-num">2</span>
+        <b>Quadratic Formula:</b> x = [-b ± √(b² - 4ac)] / 2a
+      </div>
+      <div class="step">
+        <span class="step-num">3</span>
+        <b>Discriminant (D):</b> D = b² - 4ac
+        <ul style="margin-top:8px">
+          <li>D > 0 → Two distinct real roots</li>
+          <li>D = 0 → Two equal real roots</li>
+          <li>D < 0 → No real roots</li>
+        </ul>
+      </div>`,
+    example: `
+      <h3>Example: Solve 2x² + 5x + 3 = 0</h3>
+      <div class="step">
+        <span class="step-num">1</span>
+        Identify: a = 2, b = 5, c = 3
+      </div>
+      <div class="step">
+        <span class="step-num">2</span>
+        Find D: D = (5)² - 4(2)(3) = 25 - 24 = 1
+      </div>
+      <div class="step">
+        <span class="step-num">3</span>
+        Apply formula: x = [-5 ± √1] / 2(2) = [-5 ± 1] / 4
+      </div>
+      <div class="step">
+        <span class="step-num">4</span>
+        <b>Solutions:</b> x = -1 or x = -3/2
+      </div>`
+  },
+  
+  ap: {
+    title: "Arithmetic Progressions (AP)",
+    formula: "a, a+d, a+2d, a+3d, ...",
+    solution: `
+      <div class="formula-box">
+        <b>Key Formulas:</b><br>
+        • nth term: aₙ = a + (n-1)d<br>
+        • Sum of n terms: Sₙ = n/2 [2a + (n-1)d]<br>
+        • Or: Sₙ = n/2 (a + l) where l = last term
+      </div>`,
+    example: `
+      <h3>Example: Find 10th term of AP: 2, 5, 8, 11, ...</h3>
+      <div class="step">
+        <span class="step-num">1</span>
+        First term (a) = 2
+      </div>
+      <div class="step">
+        <span class="step-num">2</span>
+        Common difference (d) = 5 - 2 = 3
+      </div>
+      <div class="step">
+        <span class="step-num">3</span>
+        Use formula: a₁₀ = a + (10-1)d
+      </div>
+      <div class="step">
+        <span class="step-num">4</span>
+        a₁₀ = 2 + 9(3) = 2 + 27 = <b>29</b>
+      </div>`
+  },
+  
+  trigonometry: {
+    title: "Trigonometry - Basic Ratios",
+    formula: "SOH-CAH-TOA",
+    solution: `
+      <div class="formula-box">
+        <b>Basic Ratios:</b><br>
+        • sin θ = Opposite / Hypotenuse<br>
+        • cos θ = Adjacent / Hypotenuse<br>
+        • tan θ = Opposite / Adjacent
+      </div>
+      <div class="formula-box" style="margin-top:12px">
+        <b>Important Identities:</b><br>
+        • sin²θ + cos²θ = 1<br>
+        • 1 + tan²θ = sec²θ<br>
+        • 1 + cot²θ = cosec²θ
+      </div>`,
+    example: `
+      <h3>Remember: 0°, 30°, 45°, 60°, 90°</h3>
+      <table style="width:100%; border-collapse:collapse; margin-top:12px">
+        <tr style="background:rgba(90,166,255,0.2)">
+          <th style="padding:8px; border:1px solid var(--border)">θ</th>
+          <th style="padding:8px; border:1px solid var(--border)">sin θ</th>
+          <th style="padding:8px; border:1px solid var(--border)">cos θ</th>
+          <th style="padding:8px; border:1px solid var(--border)">tan θ</th>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--border)">0°</td>
+          <td style="padding:8px; border:1px solid var(--border)">0</td>
+          <td style="padding:8px; border:1px solid var(--border)">1</td>
+          <td style="padding:8px; border:1px solid var(--border)">0</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--border)">30°</td>
+          <td style="padding:8px; border:1px solid var(--border)">1/2</td>
+          <td style="padding:8px; border:1px solid var(--border)">√3/2</td>
+          <td style="padding:8px; border:1px solid var(--border)">1/√3</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--border)">45°</td>
+          <td style="padding:8px; border:1px solid var(--border)">1/√2</td>
+          <td style="padding:8px; border:1px solid var(--border)">1/√2</td>
+          <td style="padding:8px; border:1px solid var(--border)">1</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--border)">60°</td>
+          <td style="padding:8px; border:1px solid var(--border)">√3/2</td>
+          <td style="padding:8px; border:1px solid var(--border)">1/2</td>
+          <td style="padding:8px; border:1px solid var(--border)">√3</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border:1px solid var(--border)">90°</td>
+          <td style="padding:8px; border:1px solid var(--border)">1</td>
+          <td style="padding:8px; border:1px solid var(--border)">0</td>
+          <td style="padding:8px; border:1px solid var(--border)">∞</td>
+        </tr>
+      </table>`
+  }
+};
+
+/* =========================
+   SCIENCE PRACTICE PROBLEMS
+   ========================= */
+const SCIENCE_PROBLEMS = [
+  {
+    id: "elec1",
+    subject: "Physics",
+    question: "Calculate the resistance of a wire if voltage across it is 12V and current through it is 3A.",
+    solution: "Using Ohm's Law: V = IR<br>R = V/I = 12/3 = <b>4Ω</b>",
+    answer: "4"
+  },
+  {
+    id: "elec2",
+    subject: "Physics",
+    question: "A bulb is rated 100W, 220V. Calculate the current through it when operating at rated voltage.",
+    solution: "Power = Voltage × Current<br>I = P/V = 100/220 = <b>0.45A</b>",
+    answer: "0.45"
+  },
+  {
+    id: "light1",
+    subject: "Physics",
+    question: "A light ray enters from air (n=1) to glass (n=1.5) at 30°. Find the angle of refraction.",
+    solution: "Using Snell's Law: n₁ sin i = n₂ sin r<br>1 × sin 30° = 1.5 × sin r<br>sin r = 0.5/1.5 = 0.33<br>r = <b>19.5°</b>",
+    answer: "19.5"
+  }
+];
+
+const MATH_PROBLEMS = [
+  {
+    id: "quad1",
+    topic: "Quadratic Equations",
+    question: "Solve: x² - 5x + 6 = 0",
+    hint: "Try factoring or use quadratic formula",
+    solution: `
+      <div class="step"><span class="step-num">1</span> a=1, b=-5, c=6</div>
+      <div class="step"><span class="step-num">2</span> Factor: (x-2)(x-3) = 0</div>
+      <div class="step"><span class="step-num">3</span> Solutions: x = 2 or x = 3</div>`,
+    answer: "2, 3"
+  },
+  {
+    id: "ap1",
+    topic: "AP",
+    question: "Find the 20th term of AP: 3, 7, 11, 15, ...",
+    hint: "Use aₙ = a + (n-1)d",
+    solution: `
+      <div class="step"><span class="step-num">1</span> a = 3, d = 4</div>
+      <div class="step"><span class="step-num">2</span> a₂₀ = 3 + (20-1)×4</div>
+      <div class="step"><span class="step-num">3</span> a₂₀ = 3 + 76 = <b>79</b></div>`,
+    answer: "79"
+  },
+  {
+    id: "trig1",
+    topic: "Trigonometry",
+    question: "If sin θ = 3/5, find cos θ",
+    hint: "Use sin²θ + cos²θ = 1",
+    solution: `
+      <div class="step"><span class="step-num">1</span> sin²θ + cos²θ = 1</div>
+      <div class="step"><span class="step-num">2</span> (3/5)² + cos²θ = 1</div>
+      <div class="step"><span class="step-num">3</span> cos²θ = 1 - 9/25 = 16/25</div>
+      <div class="step"><span class="step-num">4</span> cos θ = <b>4/5</b></div>`,
+    answer: "4/5"
+  }
+];
+
+/* =========================
+   CORE FUNCTIONS
+   ========================= */
+let STATE = initStore();
+
+const $ = (q)=>document.querySelector(q);
+const $$ = (q)=>Array.from(document.querySelectorAll(q));
+
+function setTheme(theme){
+  document.documentElement.dataset.theme = theme === "light" ? "light" : "dark";
+  STATE.theme = theme;
+  saveStore(STATE);
+}
+setTheme(STATE.theme);
+
+function switchSubject(subject){
+  CURRENT_SUBJECT = subject;
+  STATE.subject = subject;
+  saveStore(STATE);
+  
+  // Update subject tabs
+  $$(".subject-tab").forEach(t => t.classList.toggle("active", t.dataset.subject === subject));
+  
+  // Show/hide content
+  $$(".subject-content").forEach(s => s.classList.add("hidden"));
+  $("#subject-" + subject).classList.remove("hidden");
+  
+  // Reset to overview tab
+  switchTab("overview");
+}
+
+function switchTab(tab){
+  CURRENT_TAB = tab;
+  
+  // Update tab buttons
+  $$(".tab").forEach(t => t.classList.toggle("active", t.dataset.tab === tab));
+  
+  // Show/hide sections based on current subject
+  let sections = [];
+  let sectionPrefix = '';
+  
+  if(CURRENT_SUBJECT === 'sst'){
+    sectionPrefix = 'tab-';
+    sections = ["overview", "chapters", "visual", "practice", "flashcards", "quiz", "progress"];
+  } else if(CURRENT_SUBJECT === 'science'){
+    sectionPrefix = 'sci-';
+    sections = ["overview", "chapters", "visual", "practice", "flashcards", "quiz"];
+  } else if(CURRENT_SUBJECT === 'math'){
+    sectionPrefix = 'math-';
+    sections = ["overview", "chapters", "visual", "practice", "flashcards", "quiz"];
+  }
+  
+  // Hide all sections in current subject
+  sections.forEach(t => {
+    const el = $("#" + sectionPrefix + t);
+    if(el) el.classList.add("hidden");
+  });
+  
+  // Show active section
+  const activeEl = $("#" + sectionPrefix + tab);
+  if(activeEl) activeEl.classList.remove("hidden");
+}
+
+/* =========================
+   SCIENCE FUNCTIONS
+   ========================= */
+function loadDiagram(diagramKey){
+  const display = $("#diagramDisplay");
+  if(DIAGRAMS[diagramKey]){
+    display.innerHTML = DIAGRAMS[diagramKey];
+  }
+}
+
+function loadScienceChapter(chapter){
+  const content = $("#sciChapterContent");
+  const chapters = {
+    light: `
+      <div class="card">
+        <h3>Light - Reflection & Refraction</h3>
+        <div class="formula-box">
+          <b>Laws of Refraction:</b><br>
+          • n₁ sin i = n₂ sin r (Snell's Law)<br>
+          • Refractive index: n = c/v = sin i / sin r
+        </div>
+        <div class="callout">
+          <b>Key Concepts:</b><br>
+          • Light travels in straight lines<br>
+          • Bends when changing medium<br>
+          • Denser to rarer → bends away from normal<br>
+          • Rarer to denser → bends towards normal
+        </div>
+      </div>`,
+    electricity: `
+      <div class="card">
+        <h3>Electricity</h3>
+        <div class="formula-box">
+          <b>Important Formulas:</b><br>
+          • V = IR (Ohm's Law)<br>
+          • P = VI = I²R = V²/R<br>
+          • H = I²Rt (Heating effect)
+        </div>
+        <div class="concept-map">
+          <div class="concept-node">Voltage (V)</div>
+          <span class="concept-arrow">→</span>
+          <div class="concept-node">Current (I)</div>
+          <span class="concept-arrow">→</span>
+          <div class="concept-node">Resistance (R)</div>
+        </div>
+      </div>`,
+    life: `
+      <div class="card">
+        <h3>Life Processes</h3>
+        <div class="concept-map">
+          <div class="concept-node">Nutrition</div>
+          <div class="concept-node">Respiration</div>
+          <div class="concept-node">Transportation</div>
+          <div class="concept-node">Excretion</div>
+        </div>
+        <div class="callout" style="margin-top:16px">
+          <b>Remember:</b> All living organisms need energy and materials to stay alive!
+        </div>
+      </div>`
+  };
+  content.innerHTML = chapters[chapter] || "<div class='muted'>Select a chapter</div>";
+}
+
+function loadSciencePractice(){
+  const area = $("#sciPracticeArea");
+  let html = "";
+  SCIENCE_PROBLEMS.forEach((p, idx) => {
+    html += `
+      <div class="problem">
+        <div class="small" style="color:var(--science)"><b>${p.subject}</b></div>
+        <div style="font-weight:600; margin-top:6px"><b>Q${idx+1}.</b> ${p.question}</div>
+        <input type="text" class="problem-input" id="ans-${p.id}" placeholder="Your answer"/>
+        <button class="btn good" onclick="checkScienceAnswer('${p.id}', ${idx})">Check Answer</button>
+        <div id="solution-${p.id}" class="hidden" style="margin-top:10px; padding:10px; background:rgba(83,209,140,0.1); border-radius:8px">
+          ${p.solution}
+        </div>
+      </div>`;
+  });
+  area.innerHTML = html;
+}
+
+function checkScienceAnswer(id, idx){
+  const userAns = $("#ans-" + id).value.trim();
+  const problem = SCIENCE_PROBLEMS[idx];
+  const solutionDiv = $("#solution-" + id);
+  
+  solutionDiv.classList.remove("hidden");
+  
+  if(userAns === problem.answer || Math.abs(parseFloat(userAns) - parseFloat(problem.answer)) < 0.1){
+    solutionDiv.style.background = "rgba(83,209,140,0.2)";
+    solutionDiv.innerHTML = "✅ Correct! " + problem.solution;
+  } else {
+    solutionDiv.style.background = "rgba(255,107,107,0.2)";
+    solutionDiv.innerHTML = "❌ Try again. <br><br><b>Solution:</b><br>" + problem.solution;
+  }
+}
+
+/* =========================
+   MATH FUNCTIONS
+   ========================= */
+function loadMathChapter(chapter){
+  const content = $("#mathChapterContent");
+  const data = {
+    quadratic: MATH_CONTENT.quadratic,
+    ap: MATH_CONTENT.ap,
+    trigonometry: MATH_CONTENT.trigonometry
+  };
+  
+  if(data[chapter]){
+    const d = data[chapter];
+    content.innerHTML = `
+      <div class="card">
+        <h2>${d.title}</h2>
+        <div class="formula-box">
+          <b>Main Formula:</b> ${d.formula}
+        </div>
+        ${d.solution}
+        <div class="divider"></div>
+        ${d.example}
+      </div>`;
+  } else {
+    content.innerHTML = `<div class="card"><h3>Chapter: ${chapter}</h3><div class="muted">Content coming soon...</div></div>`;
+  }
+}
+
+function loadMathPractice(topic){
+  const area = $("#mathPracticeArea");
+  const problems = MATH_PROBLEMS.filter(p => 
+    topic === "quadratic" ? p.topic === "Quadratic Equations" :
+    topic === "ap" ? p.topic === "AP" :
+    topic === "trigonometry" ? p.topic === "Trigonometry" : false
+  );
+  
+  let html = "";
+  problems.forEach((p, idx) => {
+    html += `
+      <div class="problem">
+        <div class="small" style="color:var(--math)"><b>${p.topic}</b></div>
+        <div style="font-weight:600; margin-top:6px"><b>Q${idx+1}.</b> ${p.question}</div>
+        <div class="small muted"style="margin-top:4px">💡 Hint: ${p.hint}</div>
+        <input type="text" class="problem-input" id="math-ans-${p.id}" placeholder="Your answer"/>
+        <button class="btn good" onclick="checkMathAnswer('${p.id}', ${MATH_PROBLEMS.indexOf(p)})">Check Answer</button>
+        <div id="math-solution-${p.id}" class="hidden" style="margin-top:10px"></div>
+      </div>`;
+  });
+  area.innerHTML = html || "<div class='muted'>No problems available for this topic</div>";
+}
+
+function checkMathAnswer(id, idx){
+  const userAns = $("#math-ans-" + id).value.trim();
+  const problem = MATH_PROBLEMS[idx];
+  const solutionDiv = $("#math-solution-" + id);
+  
+  solutionDiv.classList.remove("hidden");
+  
+  if(userAns === problem.answer){
+    solutionDiv.style.background = "rgba(83,209,140,0.2)";
+    solutionDiv.style.padding = "12px";
+    solutionDiv.style.borderRadius = "8px";
+    solutionDiv.innerHTML = "✅ <b>Correct!</b><br><br><b>Solution:</b>" + problem.solution;
+  } else {
+    solutionDiv.style.background = "rgba(255,107,107,0.2)";
+    solutionDiv.style.padding = "12px";
+    solutionDiv.style.borderRadius = "8px";
+    solutionDiv.innerHTML = "❌ <b>Not quite.</b><br><br><b>Solution:</b>" + problem.solution;
+  }
+}
+
+function loadMathVisual(){
+  const area = $("#mathVisualArea");
+  area.innerHTML = `
+    <div class="card">
+      <h3>Quadratic Function Graph</h3>
+      <div class="diagram">
+        <svg viewBox="0 0 400 300" style="max-width:500px">
+          <!-- Axes -->
+          <line x1="200" y1="20" x2="200" y2="280" stroke="white" stroke-width="2"/>
+          <line x1="20" y1="150" x2="380" y2="150" stroke="white" stroke-width="2"/>
+          <!-- Parabola y = x² -->
+          <path d="M 100 250 Q 200 50 300 250" fill="none" stroke="#5aa6ff" stroke-width="3"/>
+          <!-- Labels -->
+          <text x="210" y="40" fill="white" font-size="14">y</text>
+          <text x="360" y="140" fill="white" font-size="14">x</text>
+          <text x="180" y="70" fill="#5aa6ff" font-size="16" font-weight="bold">y = x²</text>
+          <!-- Origin -->
+          <circle cx="200" cy="150" r="4" fill="#ffb454"/>
+          <text x="210" y="165" fill="#ffb454" font-size="12">(0,0)</text>
+        </svg>
+      </div>
+      <div class="formula-box">
+        <b>Standard Form:</b> y = ax² + bx + c<br>
+        • If a > 0: Opens upward (∪)<br>
+        • If a < 0: Opens downward (∩)<br>
+        • Vertex formula: x = -b/2a
+      </div>
+    </div>`;
+}
+
+/* =========================
+   INITIALIZATION & WIRING
+   ========================= */
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', function() {
+  
 buildAnchors();
 buildCheatSheet();
 buildChapterFilter();
@@ -938,67 +2172,93 @@ buildTimeline();
 updateBoxesUI();
 updateStreakUI();
 
-// tabs
-$$(".tab").forEach(b=>b.addEventListener("click", ()=>setTab(b.dataset.tab)));
+// Subject tabs
+$$(".subject-tab").forEach(t => t.addEventListener("click", () => switchSubject(t.dataset.subject)));
 
-// theme
+// Feature tabs
+$$(".tab").forEach(t => t.addEventListener("click", () => switchTab(t.dataset.tab)));
+
+// Theme
 $("#themeBtn").addEventListener("click", ()=>{
   setTheme((STATE.theme||"dark")==="dark" ? "light" : "dark");
 });
 
-// reset
+// Reset
 $("#resetBtn").addEventListener("click", ()=>{
-  if(!confirm("Reset saved progress for flashcards/quiz?")) return;
+  if(!confirm("Reset saved progress?")) return;
   localStorage.removeItem(STORE_KEY);
-  STATE = initStore();
-  setTheme(STATE.theme);
-  buildChapterFilter();
-  rebuildOrder();
-  updateBoxesUI();
-  updateStreakUI();
-  makeQuiz($("#quizFilter").value, 10);
+  location.reload();
 });
 
-// chapters search/filter
+// SST features
 $("#chapterSearch").addEventListener("input", buildChapters);
 $("#chapterFilter").addEventListener("change", buildChapters);
-
-// timeline filter/search
 $("#timeFilter").addEventListener("change", buildTimeline);
 $("#timeSearch").addEventListener("input", buildTimeline);
-
-// flashcards
 $("#deckSelect").addEventListener("change", rebuildOrder);
 $("#shuffleBtn").addEventListener("click", rebuildOrder);
 
 const fcEl = $("#flashcard");
-function toggleReveal(){ fcEl.classList.toggle("revealed"); }
-fcEl.addEventListener("click", toggleReveal);
-fcEl.addEventListener("keydown", (e)=>{
-  if(e.key===" " || e.key==="Enter"){ e.preventDefault(); toggleReveal(); }
-});
+if(fcEl){
+  function toggleReveal(){ fcEl.classList.toggle("revealed"); }
+  fcEl.addEventListener("click", toggleReveal);
+  fcEl.addEventListener("keydown", (e)=>{
+    if(e.key===" " || e.key==="Enter"){ e.preventDefault(); toggleReveal(); }
+  });
+}
 
-$("#rateAgain").addEventListener("click", ()=>rateCard("again"));
-$("#rateHard").addEventListener("click", ()=>rateCard("hard"));
-$("#rateGood").addEventListener("click", ()=>rateCard("good"));
-$("#rateEasy").addEventListener("click", ()=>rateCard("easy"));
+if($("#rateAgain")) $("#rateAgain").addEventListener("click", ()=>rateCard("again"));
+if($("#rateHard")) $("#rateHard").addEventListener("click", ()=>rateCard("hard"));
+if($("#rateGood")) $("#rateGood").addEventListener("click", ()=>rateCard("good"));
+if($("#rateEasy")) $("#rateEasy").addEventListener("click", ()=>rateCard("easy"));
 
 document.addEventListener("keydown", (e)=>{
-  if($("#tab-flashcards").classList.contains("hidden")) return;
-  if(e.key==="ArrowRight") nextCard();
-  if(e.key.toLowerCase()==="a") rateCard("again");
-  if(e.key.toLowerCase()==="h") rateCard("hard");
-  if(e.key.toLowerCase()==="g") rateCard("good");
-  if(e.key.toLowerCase()==="e") rateCard("easy");
+  const fcTab = $("#tab-flashcards");
+  if(fcTab && !fcTab.classList.contains("hidden")){
+    if(e.key==="ArrowRight") nextCard();
+    if(e.key.toLowerCase()==="a") rateCard("again");
+    if(e.key.toLowerCase()==="h") rateCard("hard");
+    if(e.key.toLowerCase()==="g") rateCard("good");
+    if(e.key.toLowerCase()==="e") rateCard("easy");
+  }
 });
 
-// quiz
-$("#newQuizBtn").addEventListener("click", ()=>makeQuiz($("#quizFilter").value, 10));
-$("#submitQuizBtn").addEventListener("click", gradeQuiz);
+if($("#newQuizBtn")) $("#newQuizBtn").addEventListener("click", ()=>makeQuiz($("#quizFilter").value, 10));
+if($("#submitQuizBtn")) $("#submitQuizBtn").addEventListener("click", gradeQuiz);
 
-// init flashcards order & quiz
+// Science event listeners
+if($("#diagramSelect")) {
+  $("#diagramSelect").addEventListener("change", (e) => loadDiagram(e.target.value));
+  loadDiagram("refraction"); // Load first diagram by default
+}
+
+if($("#sciChapterSelect")) {
+  $("#sciChapterSelect").addEventListener("change", (e) => loadScienceChapter(e.target.value));
+}
+
+// Load initial content for Science practice
+if($("#sciPracticeArea")) {
+  loadSciencePractice();
+}
+
+// Math visual
+if($("#mathVisualArea")) {
+  loadMathVisual();
+}
+
+// Load initial math practice
+if($("#mathPracticeArea")) {
+  loadMathPractice("quadratic");
+}
+
+// Init flashcards and quiz
 rebuildOrder();
-makeQuiz($("#quizFilter").value, 10);
+makeQuiz($("#quizFilter")?.value || "ALL", 10);
+
+// Start with SST subject
+switchSubject(STATE.subject || 'sst');
+
+}); // End DOMContentLoaded
 </script>
 </body>
 </html>
