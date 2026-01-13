@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science • Class 10 NCERT Study App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .subject-header {
+            background: linear-gradient(135deg, var(--science-glow), transparent);
+            border-bottom: 2px solid var(--science-primary);
+        }
+        .subject-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--science-primary);
+            color: white;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+        }
+        .formula-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);
+            border: 2px solid var(--science-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <header class="header subject-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html" class="logo-icon">📚</a>
+                    <div>
+                        <span>Class 10 NCERT</span>
+                        <span class="subject-badge">🔬 Science</span>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="sst.html" class="nav-link">SST</a>
+                    <a href="science.html" class="nav-link active">Science</a>
+                    <a href="math.html" class="nav-link">Math</a>
+                </nav>
+                <div class="flex" style="gap:8px">
+                    <div class="stat-card" style="padding:8px 16px; display:flex; gap:8px; align-items:center;">
+                        <span>🔥</span>
+                        <span id="streak">0</span>
+                        <span class="text-muted">streak</span>
+                    </div>
+                    <button class="btn btn-icon" id="themeBtn">🌙</button>
+                    <button class="btn" id="resetBtn">Reset</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 24px 20px;">
+        
+        <div class="card mb-3">
+            <div class="flex-between flex-wrap" style="gap:16px">
+                <div>
+                    <h1>🔬 Science</h1>
+                    <p class="text-muted mt-1">Physics • Chemistry • Biology — Complete NCERT Syllabus</p>
+                </div>
+                <div class="stats-grid" style="gap:12px">
+                    <div class="stat-card">
+                        <div class="stat-value">16</div>
+                        <div class="stat-label">Chapters</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="cardsCount">25</div>
+                        <div class="stat-label">Flashcards</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="overview">📋 Overview</button>
+            <button class="tab" data-tab="chapters">📖 Chapters</button>
+            <button class="tab" data-tab="formulas">📐 Formulas</button>
+            <button class="tab" data-tab="diagrams">🎨 Diagrams</button>
+            <button class="tab" data-tab="flashcards">🃏 Flashcards</button>
+            <button class="tab" data-tab="quiz">❓ Quiz</button>
+        </div>
+
+        <!-- OVERVIEW -->
+        <section id="section-overview">
+            <div class="grid grid-2">
+                <div class="card">
+                    <h2>📚 Science Study Strategy</h2>
+                    <div class="mt-2">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Understand Concepts First</div>
+                                <div class="step-desc">Don't memorize blindly. Understand the "why" behind each formula.</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Master the Formulas</div>
+                                <div class="step-desc">Physics & Chemistry need formula fluency. Practice daily.</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Draw & Label Diagrams</div>
+                                <div class="step-desc">Biology especially needs clean, labeled diagrams. Practice drawing!</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Solve Numericals</div>
+                                <div class="step-desc">Physics: V=IR, Mirror formula. Chemistry: Balancing equations.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>⚡ Must-Know Formulas</h2>
+                    <div class="formula-box" style="margin-top:12px">
+                        <div class="formula-title">Ohm's Law</div>
+                        <div style="font-size:1.5rem">V = I × R</div>
+                    </div>
+                    <div class="formula-box">
+                        <div class="formula-title">Mirror Formula</div>
+                        <div style="font-size:1.5rem">1/f = 1/v + 1/u</div>
+                    </div>
+                    <div class="formula-box">
+                        <div class="formula-title">Lens Power</div>
+                        <div style="font-size:1.5rem">P = 1/f (in metres)</div>
+                    </div>
+                    <div class="formula-box">
+                        <div class="formula-title">Electric Power</div>
+                        <div style="font-size:1.5rem">P = VI = I²R = V²/R</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-2">
+                <h2>📊 Subject Breakdown</h2>
+                <div class="grid grid-3 mt-2">
+                    <div class="subject-card" style="cursor:default; border-color: #f59e0b;">
+                        <div class="subject-icon">⚡</div>
+                        <div class="subject-title">Physics</div>
+                        <div class="subject-desc">5 Chapters</div>
+                        <ul class="mt-2" style="font-size:0.9rem; color:var(--text-secondary);">
+                            <li>Light - Reflection & Refraction</li>
+                            <li>Human Eye</li>
+                            <li>Electricity</li>
+                            <li>Magnetic Effects</li>
+                            <li>Sources of Energy</li>
+                        </ul>
+                    </div>
+                    <div class="subject-card" style="cursor:default; border-color: #8b5cf6;">
+                        <div class="subject-icon">⚗️</div>
+                        <div class="subject-title">Chemistry</div>
+                        <div class="subject-desc">5 Chapters</div>
+                        <ul class="mt-2" style="font-size:0.9rem; color:var(--text-secondary);">
+                            <li>Chemical Reactions</li>
+                            <li>Acids, Bases & Salts</li>
+                            <li>Metals & Non-metals</li>
+                            <li>Carbon Compounds</li>
+                            <li>Periodic Classification</li>
+                        </ul>
+                    </div>
+                    <div class="subject-card" style="cursor:default; border-color: #22c55e;">
+                        <div class="subject-icon">🧬</div>
+                        <div class="subject-title">Biology</div>
+                        <div class="subject-desc">6 Chapters</div>
+                        <ul class="mt-2" style="font-size:0.9rem; color:var(--text-secondary);">
+                            <li>Life Processes</li>
+                            <li>Control & Coordination</li>
+                            <li>Reproduction</li>
+                            <li>Heredity & Evolution</li>
+                            <li>Environment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTERS -->
+        <section id="section-chapters" class="hidden">
+            <div class="card">
+                <h2>📖 All Chapters</h2>
+                <div id="chapterList" class="mt-2"></div>
+            </div>
+        </section>
+
+        <!-- FORMULAS -->
+        <section id="section-formulas" class="hidden">
+            <div class="card">
+                <div class="flex-between mb-2">
+                    <h2>📐 Key Formulas</h2>
+                    <select id="formulaSelect">
+                        <option value="electricity">Electricity</option>
+                        <option value="light">Light & Optics</option>
+                    </select>
+                </div>
+                <div id="formulaArea"></div>
+            </div>
+
+            <div class="card mt-2">
+                <h2>🧪 Chemistry Quick Reference</h2>
+                <div class="grid grid-2 mt-2">
+                    <div class="callout">
+                        <strong>pH Scale</strong>
+                        <p class="mt-1">0-6: Acidic | 7: Neutral | 8-14: Basic</p>
+                    </div>
+                    <div class="callout">
+                        <strong>Reactivity Series</strong>
+                        <p class="mt-1">K > Na > Ca > Mg > Al > Zn > Fe > Pb > H > Cu > Ag > Au</p>
+                    </div>
+                    <div class="callout tip">
+                        <strong>Neutralization</strong>
+                        <p class="mt-1">Acid + Base → Salt + Water</p>
+                    </div>
+                    <div class="callout tip">
+                        <strong>Photosynthesis</strong>
+                        <p class="mt-1">6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIAGRAMS -->
+        <section id="section-diagrams" class="hidden">
+            <div class="card">
+                <div class="flex-between mb-2">
+                    <h2>🎨 Interactive Diagrams</h2>
+                    <select id="diagramSelect">
+                        <option value="drawCircuit">Electric Circuit</option>
+                        <option value="drawEye">Human Eye</option>
+                        <option value="drawRefraction">Light Refraction</option>
+                        <option value="drawNeuron">Neuron Structure</option>
+                        <option value="drawHeart">Human Heart</option>
+                    </select>
+                </div>
+                <div class="diagram-container" id="diagramArea"></div>
+                <div class="callout tip mt-2">
+                    <strong>💡 Exam Tip:</strong> Practice drawing these diagrams by hand. Neat, labeled diagrams score full marks!
+                </div>
+            </div>
+        </section>
+
+        <!-- FLASHCARDS -->
+        <section id="section-flashcards" class="hidden">
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="flex-between mb-2">
+                        <h2>🃏 Flashcards</h2>
+                        <div class="flex" style="gap:8px">
+                            <select id="deckSelect"></select>
+                            <button class="btn" id="shuffleBtn">🔀 Shuffle</button>
+                        </div>
+                    </div>
+                    <div id="flashcardArea"></div>
+                </div>
+
+                <div class="card">
+                    <h2>📊 Progress</h2>
+                    <div class="stats-grid mt-2">
+                        <div class="stat-card" style="border-color: #ef4444;">
+                            <div class="stat-value" id="box1">0</div>
+                            <div class="stat-label">Box 1</div>
+                        </div>
+                        <div class="stat-card" style="border-color: #f59e0b;">
+                            <div class="stat-value" id="box2">0</div>
+                            <div class="stat-label">Box 2</div>
+                        </div>
+                        <div class="stat-card" style="border-color: #3b82f6;">
+                            <div class="stat-value" id="box3">0</div>
+                            <div class="stat-label">Box 3</div>
+                        </div>
+                        <div class="stat-card" style="border-color: #22c55e;">
+                            <div class="stat-value" id="box4">0</div>
+                            <div class="stat-label">Mastered</div>
+                        </div>
+                    </div>
+                    <div class="callout mt-2">
+                        <strong>📌 Mnemonics Help!</strong>
+                        <p class="mt-1">Look for memory tricks on each card. They make recall easier!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUIZ -->
+        <section id="section-quiz" class="hidden">
+            <div class="card">
+                <div class="flex-between mb-2">
+                    <h2>❓ Science Quiz</h2>
+                    <button class="btn btn-science" id="newQuizBtn">🎲 New Quiz</button>
+                </div>
+                <div id="quizArea"></div>
+                <div class="flex-between mt-2" style="padding-top:16px; border-top:1px solid var(--border-color);">
+                    <button class="btn btn-success" id="submitQuizBtn">✓ Submit</button>
+                    <div class="stat-card" style="padding:8px 20px;">
+                        <span style="font-size:1.2rem; font-weight:700" id="quizScore">0/10</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="text-align:center; padding:24px; color:var(--text-muted); font-size:0.9rem; border-top:1px solid var(--border-color);">
+        <p>📚 Class 10 NCERT Study App • Built for exam success</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/science.js"></script>
+</body>
+</html>

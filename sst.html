@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST (Social Science) • Class 10 NCERT Study App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .subject-header {
+            background: linear-gradient(135deg, var(--sst-glow), transparent);
+            border-bottom: 2px solid var(--sst-primary);
+        }
+        .subject-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--sst-primary);
+            color: white;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <!-- Header -->
+    <header class="header subject-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html" class="logo-icon">📚</a>
+                    <div>
+                        <span>Class 10 NCERT</span>
+                        <span class="subject-badge">📜 SST</span>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="sst.html" class="nav-link active">SST</a>
+                    <a href="science.html" class="nav-link">Science</a>
+                    <a href="math.html" class="nav-link">Math</a>
+                </nav>
+                <div class="flex" style="gap:8px">
+                    <div class="stat-card" style="padding:8px 16px; display:flex; gap:8px; align-items:center;">
+                        <span>🔥</span>
+                        <span id="streak">0</span>
+                        <span class="text-muted">day streak</span>
+                    </div>
+                    <button class="btn btn-icon" id="themeBtn" title="Toggle theme">🌙</button>
+                    <button class="btn" id="resetBtn">Reset</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container" style="padding: 24px 20px;">
+        
+        <!-- Subject Overview -->
+        <div class="card mb-3">
+            <div class="flex-between flex-wrap" style="gap:16px">
+                <div>
+                    <h1 style="display:flex; align-items:center; gap:12px;">
+                        📜 Social Science (SST)
+                    </h1>
+                    <p class="text-muted mt-1">History • Geography • Civics • Economics — Complete NCERT Syllabus</p>
+                </div>
+                <div class="stats-grid" style="gap:12px">
+                    <div class="stat-card">
+                        <div class="stat-value">23</div>
+                        <div class="stat-label">Chapters</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="cardsCount">0</div>
+                        <div class="stat-label">Flashcards</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" data-tab="overview">📋 Overview</button>
+            <button class="tab" data-tab="chapters">📖 Chapters</button>
+            <button class="tab" data-tab="timeline">📅 Timeline</button>
+            <button class="tab" data-tab="concepts">🗺️ Concept Maps</button>
+            <button class="tab" data-tab="flashcards">🃏 Flashcards</button>
+            <button class="tab" data-tab="quiz">❓ Quiz</button>
+        </div>
+
+        <!-- OVERVIEW Section -->
+        <section id="section-overview">
+            <div class="grid grid-2">
+                <div class="card">
+                    <h2>📚 How to Study SST Effectively</h2>
+                    <div class="mt-2">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Understand the Timeline</div>
+                                <div class="step-desc">History is all about when and why. Focus on anchor years first.</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Connect Concepts</div>
+                                <div class="step-desc">Use concept maps to see how events and ideas link together.</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Memorize with Flashcards</div>
+                                <div class="step-desc">Use the Leitner box system — cards you know move up, unknown cards repeat.</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Test with Quizzes</div>
+                                <div class="step-desc">Regular testing improves recall by 50%+. Take the quiz after flashcards.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>⭐ Anchor Years (Must Know!)</h2>
+                    <p class="text-muted mb-2">These years appear frequently in exams. Memorize them first!</p>
+                    
+                    <div class="grid grid-2" style="gap:8px">
+                        <div class="callout tip">
+                            <strong>1789</strong> — French Revolution
+                        </div>
+                        <div class="callout tip">
+                            <strong>1815</strong> — Congress of Vienna
+                        </div>
+                        <div class="callout tip">
+                            <strong>1848</strong> — Revolutions in Europe
+                        </div>
+                        <div class="callout tip">
+                            <strong>1871</strong> — German Unification
+                        </div>
+                        <div class="callout warning">
+                            <strong>1919</strong> — Jallianwala Bagh
+                        </div>
+                        <div class="callout warning">
+                            <strong>1920</strong> — Non-Cooperation
+                        </div>
+                        <div class="callout warning">
+                            <strong>1930</strong> — Dandi March
+                        </div>
+                        <div class="callout warning">
+                            <strong>1942</strong> — Quit India
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-2">
+                <h2>📊 Subject Breakdown</h2>
+                <div class="grid grid-4 mt-2">
+                    <div class="subject-card" style="cursor:default; border-color: #ef4444;">
+                        <div class="subject-icon">🏰</div>
+                        <div class="subject-title">History</div>
+                        <div class="subject-desc">5 Chapters</div>
+                        <ul class="mt-2" style="font-size:0.9rem; color:var(--text-secondary);">
+                            <li>Nationalism in Europe</li>
+                            <li>Nationalism in India</li>
+                            <li>Global World</li>
+                            <li>Industrialisation</li>
+                            <li>Print Culture</li>
+                        </ul>
+                    </div>
+                    <div class="subject-card" style="cursor:default; border-color: #22c55e;">
+                        <div class="subject-icon">🗺️</div>
+                        <div class="subject-title">Geography</div>
+                        <div class="subject-desc">7 Chapters</div>
+                        <ul class="mt-2" style="font-size:0.9rem; color:var(--text-secondary);">
+                            <li>Resources</li>
+                            <li>Forest & Wildlife</li>
+                            <li>Water Resources</li>
+                            <li>Agriculture</li>
+                            <li>Minerals & Energy</li>
+                        </ul>
+                    </div>
+                    <div class="subject-card" style="cursor:default; border-color: #8b5cf6;">
+                        <div class="subject-icon">⚖️</div>
+                        <div class="subject-title">Civics</div>
+                        <div class="subject-desc">6 Chapters</div>
+                        <ul class="mt-2" style="font-size:0.9rem; color:var(--text-secondary);">
+                            <li>Power Sharing</li>
+                            <li>Federalism</li>
+                            <li>Democracy & Diversity</li>
+                            <li>Political Parties</li>
+                            <li>Outcomes of Democracy</li>
+                        </ul>
+                    </div>
+                    <div class="subject-card" style="cursor:default; border-color: #f59e0b;">
+                        <div class="subject-icon">📈</div>
+                        <div class="subject-title">Economics</div>
+                        <div class="subject-desc">5 Chapters</div>
+                        <ul class="mt-2" style="font-size:0.9rem; color:var(--text-secondary);">
+                            <li>Development</li>
+                            <li>Sectors of Economy</li>
+                            <li>Money & Credit</li>
+                            <li>Globalisation</li>
+                            <li>Consumer Rights</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTERS Section -->
+        <section id="section-chapters" class="hidden">
+            <div class="card">
+                <div class="flex-between mb-2">
+                    <h2>📖 All Chapters</h2>
+                    <input type="search" id="chapterSearch" placeholder="🔍 Search chapters..." style="width:250px">
+                </div>
+                <div id="chapterList"></div>
+            </div>
+        </section>
+
+        <!-- TIMELINE Section -->
+        <section id="section-timeline" class="hidden">
+            <div class="card">
+                <div class="flex-between mb-2">
+                    <h2>📅 Visual Timeline</h2>
+                    <select id="timelineFilter">
+                        <option value="ALL">All History Chapters</option>
+                    </select>
+                </div>
+                <div class="callout tip mb-2">
+                    <strong>💡 Tip:</strong> Events marked with ⭐ Anchor are the most important. Memorize these first!
+                </div>
+                <div id="timelineContainer"></div>
+            </div>
+        </section>
+
+        <!-- CONCEPT MAPS Section -->
+        <section id="section-concepts" class="hidden">
+            <div class="card">
+                <div class="flex-between mb-2">
+                    <h2>🗺️ Concept Maps</h2>
+                    <select id="conceptSelect">
+                        <option value="nationalism_europe">Nationalism in Europe</option>
+                        <option value="nationalism_india">Nationalism in India</option>
+                        <option value="economy_sectors">Sectors of Economy</option>
+                    </select>
+                </div>
+                <div id="conceptMapContainer"></div>
+            </div>
+
+            <!-- Interactive India Map for Geography -->
+            <div class="card mt-2">
+                <h2>🇮🇳 India's Resources at a Glance</h2>
+                <div class="grid grid-3 mt-2">
+                    <div class="card" style="border-color: #22c55e;">
+                        <h3>🌾 Agricultural Regions</h3>
+                        <ul style="font-size:0.9rem;">
+                            <li><strong>Punjab/Haryana:</strong> Wheat, Rice (Green Revolution)</li>
+                            <li><strong>West Bengal:</strong> Rice, Jute, Tea</li>
+                            <li><strong>Maharashtra:</strong> Cotton, Sugarcane</li>
+                            <li><strong>Karnataka:</strong> Coffee, Silk</li>
+                            <li><strong>Kerala:</strong> Rubber, Spices</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="border-color: #f59e0b;">
+                        <h3>⛏️ Mineral Belts</h3>
+                        <ul style="font-size:0.9rem;">
+                            <li><strong>Chhota Nagpur:</strong> Coal, Iron, Mica</li>
+                            <li><strong>Odisha:</strong> Iron Ore, Bauxite</li>
+                            <li><strong>Rajasthan:</strong> Marble, Sandstone</li>
+                            <li><strong>Gujarat:</strong> Petroleum</li>
+                            <li><strong>Karnataka:</strong> Gold, Iron</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="border-color: #3b82f6;">
+                        <h3>🏭 Industrial Hubs</h3>
+                        <ul style="font-size:0.9rem;">
+                            <li><strong>Mumbai-Pune:</strong> Engineering, IT</li>
+                            <li><strong>Bengaluru:</strong> IT, Aerospace</li>
+                            <li><strong>Chennai:</strong> Automobiles</li>
+                            <li><strong>Jamshedpur:</strong> Steel (TISCO)</li>
+                            <li><strong>Ahmedabad:</strong> Textiles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLASHCARDS Section -->
+        <section id="section-flashcards" class="hidden">
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="flex-between mb-2">
+                        <h2>🃏 Flashcards</h2>
+                        <div class="flex" style="gap:8px">
+                            <select id="deckSelect"></select>
+                            <button class="btn" id="shuffleBtn">🔀 Shuffle</button>
+                        </div>
+                    </div>
+                    <div id="flashcardArea"></div>
+                </div>
+
+                <div class="card">
+                    <h2>📊 Leitner Box Progress</h2>
+                    <p class="text-muted mb-2">Cards move up boxes when you know them, down when you don't.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card" style="border-color: #ef4444;">
+                            <div class="stat-value" id="box1">0</div>
+                            <div class="stat-label">Box 1 (New)</div>
+                        </div>
+                        <div class="stat-card" style="border-color: #f59e0b;">
+                            <div class="stat-value" id="box2">0</div>
+                            <div class="stat-label">Box 2</div>
+                        </div>
+                        <div class="stat-card" style="border-color: #3b82f6;">
+                            <div class="stat-value" id="box3">0</div>
+                            <div class="stat-label">Box 3</div>
+                        </div>
+                        <div class="stat-card" style="border-color: #22c55e;">
+                            <div class="stat-value" id="box4">0</div>
+                            <div class="stat-label">Box 4 (Mastered)</div>
+                        </div>
+                    </div>
+
+                    <div class="callout mt-2">
+                        <strong>📌 Rating Guide:</strong>
+                        <ul style="margin-top:8px; font-size:0.9rem;">
+                            <li><strong>Again:</strong> Didn't know → Back to Box 1</li>
+                            <li><strong>Hard:</strong> Struggled → Move down 1 box</li>
+                            <li><strong>Good:</strong> Knew it → Move up 1 box</li>
+                            <li><strong>Easy:</strong> Instant recall → Jump to Box 4</li>
+                        </ul>
+                    </div>
+
+                    <div class="callout tip mt-2">
+                        <strong>💡 Tip:</strong> If you can answer confidently in under 5 seconds, press Easy!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUIZ Section -->
+        <section id="section-quiz" class="hidden">
+            <div class="card">
+                <div class="flex-between mb-2">
+                    <h2>❓ Quick Quiz</h2>
+                    <div class="flex" style="gap:8px">
+                        <select id="quizFilter"></select>
+                        <button class="btn btn-sst" id="newQuizBtn">🎲 New Quiz</button>
+                    </div>
+                </div>
+                
+                <div id="quizArea"></div>
+                
+                <div class="flex-between mt-2" style="padding-top:16px; border-top:1px solid var(--border-color);">
+                    <button class="btn btn-success" id="submitQuizBtn">✓ Submit Quiz</button>
+                    <div class="stat-card" style="padding:8px 20px;">
+                        <span style="font-size:1.2rem; font-weight:700" id="quizScore">0/10</span>
+                        <span class="text-muted" style="margin-left:8px">Score</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer style="text-align:center; padding:24px; color:var(--text-muted); font-size:0.9rem; border-top:1px solid var(--border-color);">
+        <p>📚 Class 10 NCERT Study App • Built for exam success</p>
+        <p style="margin-top:4px;">All content aligned with CBSE/NCERT syllabus • New Delhi</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/sst.js"></script>
+    <script>
+        // Update card count
+        document.getElementById('cardsCount').textContent = SST_CARDS.length;
+    </script>
+</body>
+</html>
